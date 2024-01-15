@@ -1,8 +1,9 @@
 import React from 'react'
 import styles from './FiltersCategory.module.scss'
 import CategoryTab from './category-tab/CategoryTab'
-import { CategoriesName } from '../../../store/categories/categories.types'
+import { CategoriesName } from '../../../store/categories/categories.type'
 const FiltersCateogry = () => {
+  
   return (
     <div className={styles.filter_category}>
         <CategoryTab text={"모두"} categoryName={CategoriesName.All}/>

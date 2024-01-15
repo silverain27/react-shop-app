@@ -14,6 +14,7 @@ const Nav = () => {
                         {" "}
                         <FiShoppingCart/>
                     </Link>
+                    
                 </div>
             </li>
             <li>

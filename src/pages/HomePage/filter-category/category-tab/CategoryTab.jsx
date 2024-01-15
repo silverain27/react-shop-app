@@ -1,10 +1,12 @@
 import React from 'react'
+import { setActiveCategory } from '../../../../store/categories/categories.slice';
 import styles from './CategoryTab.module.scss'
-import { setActiveCategory } from '../../../../store/categories/cateogies.slice';
 import { useAppDispatch, useAppSelector } from '../../../../hooks/redux';
+
+
 const CategoryTab = ({text, categoryName}) => {
     const dispatch = useAppDispatch();
-    const category = useAppSelector((state)=> state.categoriesSlice)
+    const category = useAppSelector((state)=> state.categoriesSlice);
     console.log(category)
 
     const getActiveCategory= () =>{
@@ -21,7 +23,7 @@ const CategoryTab = ({text, categoryName}) => {
         onClick={getActiveCategory}> 
         {text}
         
-    </button>
+</button>
   )
 }
 

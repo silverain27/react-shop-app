@@ -1,27 +1,47 @@
-import { createSlice } from "@reduxjs/toolkit";
-const initialState = localStorage.getItem('user')?
-JSON.parse(localStorage.getItem('user')):{email:"", token:"", id:""}
+import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
+import axios from "axios";
 
+export const fetchProduct = createAsyncThunk(
+    "product/fetchProduct",
+    async (id, thunkAPI) => {
+        try {
+            const response = await axios.get(
+                `https://fakestoreapi.com/products/${id}`
+            )
 
-createSlice(
-    {
-        name:'user',
-        initialState,
-        reducers:{
-            setUser: (state, action) => {
-                state.email = action.payload.email;
-                state.token = action.payload.token;
-                state.id = action.payload.id;
-    
-                localStorage.setItem('user', JSON.stringify(state));
-            },
-            removeUser: (state) => {
-                state.email = "";
-                state.token = "";
-                state.id = "";
-    
-                localStorage.setItem('user', JSON.stringify(state));
-            }
+            return response.data;
+        } catch (error) {
+            return thunkAPI.rejectWithValue("Error loading product");
         }
     }
 )
+
+
+
+const initialState = {
+    product: {} ,
+    isLoading: false,
+    error: ""
+}
+
+export const productSlice = createSlice({
+    name: 'product',
+    initialState,
+    reducers: {},
+    extraReducers: (builder) => {
+        builder
+            .addCase(fetchProduct.pending, (state) => {
+                state.isLoading = true;
+            })
+            .addCase(fetchProduct.fulfilled, (state, action) => {
+                state.isLoading = false;
+                state.product = action.payload;
+            })
+            .addCase(fetchProduct.rejected, (state, action) => {
+                state.isLoading = false;
+                state.error = action.payload;
+            })
+    }
+})
+
+export default productSlice.reducer;

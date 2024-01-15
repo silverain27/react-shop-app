@@ -1,5 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { CategoriesName } from "./categories.types";
+import { CategoriesName } from "./categories.type";
 
 
 const initialState = CategoriesName.All

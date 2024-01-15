@@ -5,6 +5,9 @@ import { getAuth, signInWithEmailAndPassword } from 'firebase/auth';
 import app from '../../../firebase';
 import { setUser } from '../../../store/user/user.slice';
 import {useDispatch} from 'react-redux'
+import { setUserId } from '../../../store/cart/cart.slice';
+
+
 const SignIn = () => {
   const navigate = useNavigate();
   const [firebaseError, setFirebaseError] = useState("")
@@ -19,6 +22,7 @@ const SignIn = () => {
           token :userCredential.user.refreshToken,
           id : userCredential.user.uid
         }))
+        dispatch(setUserId(userCredential.user.uid))
         navigate('/')
       })
       .catch(error=>{
