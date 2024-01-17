@@ -10,13 +10,14 @@ const CardList = () => {
     const dispatch = useAppDispatch()
     const {products, isLoading} = useAppSelector(state => state.productsSlice)
     const category = useAppSelector(state => state.categoriesSlice)
-
+    console.log("products : ", products)
     
 
     useEffect(()=>{
         dispatch(fetchProducts(category?.toLowerCase()))
     }, [category])
     if(isLoading) return <CardSkeleton/>
+
   return (
     <ul className={styles.cart_list}>
       {products.map(product=><CardItem key={product.id} item={product}/>)}

@@ -5,6 +5,7 @@ export const fetchProduct = createAsyncThunk(
     "product/fetchProduct",
     async (id, thunkAPI) => {
         try {
+            console.log("id, thunkAPI", id, thunkAPI)
             const response = await axios.get(
                 `https://fakestoreapi.com/products/${id}`
             )
