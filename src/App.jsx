@@ -4,7 +4,7 @@ import HomePage from './pages/HomePage'
 import DetailPage from './pages/DetailPage'
 import CartPage from './pages/CartPage'
 import LoginPage from './pages/LoginPage'
-import Registerpage from './pages/Registerpage'
+import Registerpage from './pages/RegisterPage'
 import OrderPage from './pages/OrderPage'
 import NotFoundPage from './pages/NotFoundPage'
 
