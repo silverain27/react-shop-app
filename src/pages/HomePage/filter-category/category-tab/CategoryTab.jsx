@@ -6,7 +6,7 @@ import { useAppDispatch, useAppSelector } from '../../../../hooks/redux';
 
 const CategoryTab = ({text, categoryName}) => {
     const dispatch = useAppDispatch();
-    const category = useAppSelector((state)=> state.categoriesSlice);
+    const category = useAppSelector((state)=> state.categoriesSlice); //store에 등록한 내용들이다. 
     console.log(category)
 
     const getActiveCategory= () =>{
@@ -23,7 +23,7 @@ const CategoryTab = ({text, categoryName}) => {
         onClick={getActiveCategory}> 
         {text}
         
-</button>
+    </button>
   )
 }
 
